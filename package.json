@@ -1,0 +1,8 @@
+{
+  "name": "lunar-calendar",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "lunar-javascript": "^1.6.0"
+  }
+}
