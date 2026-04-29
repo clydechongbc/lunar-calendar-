@@ -1,0 +1,26 @@
+name: Lunar Calendar Auto Update
+
+on:
+  schedule:
+    - cron: "0 0 1 1 *"  # runs every Jan 1st
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate ICS file
+        run: node index.js
+
+      - name: Commit updated calendar
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add calendar.ics
+          git commit -m "auto update calendar"
+          git push
